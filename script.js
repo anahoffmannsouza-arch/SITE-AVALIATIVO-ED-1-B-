@@ -1,85 +1,19 @@
-/* =========================================
-   GESTÃO DE DADOS (ARRAY DE OBJETOS)
-   ========================================= */
+
+// Atualize seu array de recursos com textos mais longos
 const recursos = [
-    { title: "Tutoria IA", desc: "Apoio 24/7 para dúvidas de estudantes." },
-    { title: "Análise de Dados", desc: "Insights em tempo real para professores." },
-    { title: "Gamificação", desc: "Aprendizado lúdico com algoritmos avançados." }
+    { 
+        title: "Tutoria IA Individual", 
+        desc: "Nossa IA analisa o histórico do aluno para criar um cronograma de estudos único. Ela identifica se você aprende melhor com vídeos, textos ou exercícios práticos." 
+    },
+    { 
+        title: "Análise Preditiva", 
+        desc: "Professores recebem alertas quando um aluno está prestes a ter dificuldade em um tópico específico, permitindo uma intervenção pedagógica antes mesmo da prova." 
+    },
+    { 
+        title: "Laboratórios Virtuais", 
+        desc: "Simulações de química e física controladas por IA que permitem experimentos seguros e detalhados em qualquer dispositivo com internet." 
+    }
 ];
 
-const faqs = [
-    { q: "A IA substitui o professor?", a: "Não, ela atua como um assistente pedagógico." },
-    { q: "É acessível para cegos?", a: "Sim, seguimos todos os padrões WCAG e ARIA." }
-];
-
-/* =========================================
-   RENDERIZAÇÃO DINÂMICA
-   ========================================= */
-function renderContent() {
-    const container = document.getElementById('cards-container');
-    container.innerHTML = recursos.map(item => `
-        <article class="card reveal">
-            <h3>${item.title}</h3>
-            <p>${item.desc}</p>
-        </article>
-    `).join('');
-
-    const faqContainer = document.getElementById('accordion-group');
-    faqContainer.innerHTML = faqs.map((f, i) => `
-        <div class="accordion-item">
-            <button aria-expanded="false" onclick="toggleAccordion(${i})" id="btn-q-${i}">
-                ${f.q}
-            </button>
-            <div class="content" hidden id="ans-${i}">${f.a}</div>
-        </div>
-    `).join('');
-}
-
-/* =========================================
-   CONTROLES DE ACESSIBILIDADE
-   ========================================= */
-let fontSize = 100;
-
-document.getElementById('btn-font-up').addEventListener('click', () => {
-    fontSize += 10;
-    document.documentElement.style.fontSize = `${fontSize}%`;
-});
-
-document.getElementById('btn-font-down').addEventListener('click', () => {
-    fontSize -= 10;
-    document.documentElement.style.fontSize = `${fontSize}%`;
-});
-
-document.getElementById('btn-contrast').addEventListener('click', () => {
-    document.body.classList.toggle('high-contrast');
-});
-
-/* =========================================
-   ANIMAÇÃO DE SCROLL (REVEAL)
-   ========================================= */
-function scrollReveal() {
-    const reveals = document.querySelectorAll('.reveal');
-    reveals.forEach(el => {
-        const windowHeight = window.innerHeight;
-        const revealTop = el.getBoundingClientRect().top;
-        if (revealTop < windowHeight - 100) {
-            el.classList.add('active');
-        }
-    });
-}
-
-window.addEventListener('scroll', scrollReveal);
-
-// Inicialização
-window.onload = () => {
-    renderContent();
-    scrollReveal();
-};
-
-function toggleAccordion(index) {
-    const content = document.getElementById(`ans-${index}`);
-    const btn = document.getElementById(`btn-q-${index}`);
-    const isHidden = content.hidden;
-    content.hidden = !isHidden;
-    btn.setAttribute('aria-expanded', isHidden);
-}
+// O resto da função renderContent() continuará funcionando 
+// automaticamente com esses novos textos!
