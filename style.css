@@ -1,30 +1,53 @@
 
-/* =========================================
-   SEÇÃO DE DETALHES E IMAGENS
-   ========================================= */
-.split-container {
-    display: flex;
-    flex-direction: column; /* Padrão celular: empilhado */
-    gap: 2rem;
-    padding: var(--spacing);
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+:root {
+    --primary: #2563eb;
+    --bg: #f8fafc;
+    --text: #1e293b;
+    --white: #ffffff;
+    --radius: 12px;
+    --spacing: 2rem;
 }
 
-.main-img {
-    width: 100%;
-    max-width: 500px;
-    border-radius: var(--radius);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+body.high-contrast {
+    --primary: #ffff00; --bg: #000; --text: #fff; --white: #222;
 }
 
-/* Ajuste para telas maiores (Desktop) */
-@media (min-width: 768px) {
-    .split-container {
-        flex-direction: row; /* Coloca lado a lado */
-        text-align: left;
-    }
-    .text-content { flex: 1; }
-    .image-container { flex: 1; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { 
+    font-family: system-ui, sans-serif; 
+    background: var(--bg); 
+    color: var(--text); 
+    line-height: 1.6;
+    transition: 0.3s;
 }
+
+/* Layout */
+header { 
+    background: var(--white); padding: 1rem; 
+    display: flex; justify-content: space-around; 
+    position: sticky; top: 0; z-index: 10;
+}
+
+.grid-container {
+    display: grid; gap: 1.5rem; padding: var(--spacing);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card { 
+    background: var(--white); padding: 1.5rem; 
+    border-radius: var(--radius); border: 1px solid #ddd;
+}
+
+.split-section {
+    display: flex; flex-wrap: wrap; gap: 2rem;
+    padding: var(--spacing); align-items: center;
+}
+
+.text-box, .img-box { flex: 1 1 350px; }
+
+img { width: 100%; border-radius: var(--radius); }
+
+/* Animações */
+.reveal { opacity: 0; transform: translateY(20px); transition: 0.6s; }
+.reveal.active { opacity: 1; transform: translateY(0); }
